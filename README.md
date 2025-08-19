@@ -1,76 +1,97 @@
-# Welcome to the Tweeter App.
+# 🐦 Tweeter App
 
-This is a dev-env only application and need to have basic requirements.
+A Twitter-like application built with **Ruby on Rails** (dev environment only).  
+This project follows concepts from [Rails Tutorial (Japanese)](https://railstutorial.jp/).
 
-- ruby@2.7.4
-- rails@5.1.6
+---
 
-## The main guide for this is:
+## ⚙️ Requirements
+- **Ruby** 2.7.4  
+- **Rails** 5.1.6  
 
-https://railstutorial.jp/
+---
 
-## The features in this app are:
+## ✨ Features
+- 👤 **User Management**  
+  - Create a new user  
+  - Login/logout  
+  - Update personal details (name, email, password)  
+  - Delete users (only admins can delete non-admin users)  
 
-- Create a new user.
-- Login with that given user.
-- Delete a user. 
-  - only admin can delete the users (non-admin users only).
-- Update personal details (name, email, password).
--  The following are the validations:
-  -  Name: Must exist. Max characters - 50.
-  -  email: Must exist. Max characters - 255. Should be of a valid pattern.
-  -  password: Must exist. Password and password confirmation must match. Min characters - 8. (can be blank when editing details but not while creating a new user).
-- Save a session.
-  - If you check "Remember Me", even if browser is closed, next time you open, you'll be logged in automatically.
-- Account activation.
-  - When a new account is created, a mail is sent to the given mail ID and account needs to be activated inorder to login.
-  - Since it's a dev-env only app, no real mails are sent. Hence please edit in databse or create a user through seeds. (refer user model to know more).
-- Forgot Password
-  - When clicked on forgot password, you can enter your mail ID and a mail will be sent to recover the password.
-  - Again, since it's a dev-env only app, no real mails are sent. Hence please edit in databse or create a user through seeds. (refer user model to know more).
-- Microposts
-  - Tweets are named as microposts.
-- Following / Followers
-  - Users can follow other users and get followed by them as well.
-  - You will be seeing the microposts off all the users you follow in your home page (Feed). 
--  i18n
-  - App is available in English and Japanese.
-  - Language is taken from the locale of the user.
-  - Default locale is English.
+- ✅ **Validations**  
+  - **Name:** must exist, max 50 chars  
+  - **Email:** must exist, max 255 chars, valid format  
+  - **Password:** must exist, min 8 chars, confirmation required  
+  - Password can be blank when editing, but **not** when creating a user  
 
+- 🔐 **Authentication**  
+  - Session management with "Remember Me" (stay logged in even after browser close)  
 
+- 📧 **Account Activation**  
+  - New accounts require activation via email  
+  - *Dev-only note*: no real emails sent; activate manually in DB or via seeds  
 
-# How to run this app locally
+- 🔑 **Forgot Password**  
+  - Password reset flow included  
+  - *Dev-only note*: no real emails sent; update manually in DB or via seeds  
 
-Run the following commands to set up the environment: 
+- 📝 **Microposts (Tweets)**  
+  - Users can post short updates  
 
-```
-% bundle install
-% rails db:migrate:reset
-```
-I already have some dummy data for the DB. Run the following command to have the seeds.
+- 🔄 **Following System**  
+  - Follow/unfollow other users  
+  - See microposts of followed users in your feed  
 
-```
-% rails db:seed
-```
+- 🌍 **Internationalization (i18n)**  
+  - Available in **English** and **Japanese**  
+  - Language is auto-detected from user's locale in user table (default: English)  
 
-The setup is now ready. Run the following command to start the server:
+---
 
-```
-% rails s
+## 🚀 Getting Started
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/kedarnhegde/tweeter.git
+cd tweeter
+bundle install
 ```
 
-You can either create a new user or log-in through an existing user (refer seeds).
+## Set up the database:
 
-
-To run tests: 
-
-```
-% rails t
+```bash
+rails db:migrate:reset
+rails db:seed   # loads dummy data
 ```
 
-To access rails console:
+## Start the server:
 
+```bash
+rails s
 ```
-% rails c
+
+- App will be running at http://localhost:3000
+- You can either create a new user or log in with a seeded account.
+  - For new users, email verification must be bypassed (since no production emails are sent).
+
+## 🧪 Running Tests
+
+```bash
+rails t
 ```
+
+## 🛠️ Developer Tools
+
+- Rails console:
+
+```bash
+rails c
+```
+
+- DB seeding available in `db/seeds.rb`
+
+## 📌 Notes
+
+- This is a dev-env only app — no production deployment.
+- Emails (activation, password reset) are not actually sent; use seeds or DB updates.
